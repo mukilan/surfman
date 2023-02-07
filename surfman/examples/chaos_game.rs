@@ -39,7 +39,7 @@ fn main() {
     let adapter = connection.create_adapter().unwrap();
     let mut device = connection.create_device(&adapter).unwrap();
 
-    let mut event_loop = EventsLoop::new();
+    let event_loop = EventLoop::new();
     let dpi = event_loop.primary_monitor().unwrap().scale_factor();
     let logical_size =
         PhysicalSize::new(WINDOW_WIDTH, WINDOW_HEIGHT)
