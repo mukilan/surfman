@@ -43,7 +43,7 @@ fn main() {
     let physical_size = PhysicalSize::new(WINDOW_WIDTH, WINDOW_HEIGHT);
     let window = WindowBuilder::new()
         .with_title("Chaos game example")
-        .with_inner_size(logical_size)
+        .with_inner_size(physical_size)
         .build(&event_loop)
         .unwrap();
 
