@@ -64,8 +64,10 @@ jobs:
       if: startsWith(matrix.os, 'ubuntu')
       run: |
         sudo apt update
-        sudo apt install gcc libxxf86vm-dev libosmesa6-dev libgles2-mesa-dev -y
-        echo "DISPLAY_MANAGER=xvfb-run" >> $GITHUB_ENV
+        sudo apt install gcc libxxf86vm-dev libosmesa6-dev libgles2-mesa-dev sway -y
+        echo "WLR_BACKENDS=headless" >> $GITHUB_ENV
+        export WLR_BACKENDS=headless
+        sway > /dev/null 2>&1 &
     - name: Install rust
       uses: actions-rs/toolchain@v1
       with:
