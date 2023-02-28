@@ -65,6 +65,7 @@ jobs:
       run: |
         sudo apt update
         sudo apt install gcc libxxf86vm-dev libosmesa6-dev libgles2-mesa-dev -y
+        echo "DISPLAY_MANAGER=xvfb-run" >> $GITHUB_ENV
     - name: Install rust
       uses: actions-rs/toolchain@v1
       with:
@@ -82,7 +83,7 @@ jobs:
       if: matrix.target == 'default'
       run: |
         cd surfman
-        cargo build --verbose ${{ matrix.features }}
+        ${DISPLAY_MANAGER} cargo test --verbose ${{ matrix.features }}
     - name: Build Windows
       if: startsWith(matrix.target, 'aarch64-uwp-windows-msvc')
       shell: cmd
