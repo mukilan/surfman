@@ -2,13 +2,14 @@
 
 //! A backend using the native Windows OpenGL WGL API.
 
+use crate::implement_interfaces;
+
 pub mod connection;
 pub mod context;
 pub mod device;
 pub mod surface;
 
-#[path = "../../../implementation/mod.rs"]
-mod implementation;
+implement_interfaces!();
 
 #[cfg(test)]
 #[path = "../../../tests.rs"]
