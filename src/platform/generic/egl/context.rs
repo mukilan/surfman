@@ -386,13 +386,13 @@ impl ContextDescriptor {
 
         EGL_FUNCTIONS.with(|egl| {
             let _guard = CurrentContextGuard::new();
-            egl.MakeCurrent(egl_display, egl::NO_SURFACE, egl::NO_SURFACE, egl_context);
-            let gl_version = GLVersion::current(gl);
+            // egl.MakeCurrent(egl_display, egl::NO_SURFACE, egl::NO_SURFACE, egl_context);
+            // let gl_version = GLVersion::current(gl);
             let compatibility_profile = context::current_context_uses_compatibility_profile(gl);
 
             ContextDescriptor {
                 egl_config_id,
-                gl_version,
+                gl_version: GLVersion::new(3, 2),
                 compatibility_profile,
             }
         })
